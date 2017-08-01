@@ -1,5 +1,4 @@
 # Library Web Application
----
 
 Written in Django, this web application was created while working through the [tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django) provided by MDN.
 
