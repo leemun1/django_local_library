@@ -4,17 +4,43 @@
     <h1>Author List</h1>
 
     {% if author_list %}
-    <ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>
+                    <strong>Full Name</strong>
+                </td>
+                <td>
+                    <strong>Date of Birth</strong>
+                </td>
+                <td>
+                    <strong>Date of Death</strong>
+                </td>
+            </tr>
+        </thead>
 
-      {% for author in author_list %}
-      <li>
-        <a href="{{ author.get_absolute_url }}">
-            {{ author.first_name }}, {{ author.last_name }}
-            {% if author.date_of_birth %}({{ author.date_of_birth }} - {% if author.date_of_death %}{{ author.date_of_death }}{% endif %}){% endif %}
-        </a>
-      </li>
-      {% endfor %}
-
-    </ul>
+        <tbody>
+            {% for author in author_list %}
+            <tr>
+                <td>
+                    <a href="{{ author.get_absolute_url }}">
+                         {{ author.last_name }}, {{ author.first_name }}
+                    </a>
+                </td>
+                <td>
+                    {% if author.date_of_birth %}
+                    {{ author.date_of_birth }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if author.date_of_death %}
+                    {{ author.date_of_death }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
+
 {% endblock %}

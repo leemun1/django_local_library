@@ -4,16 +4,30 @@
     <h1>Book List</h1>
 
     {% if book_list %}
-    <ul>
-
-      {% for book in book_list %}
-      <li>
-        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
-      </li>
-      {% endfor %}
-
-    </ul>
-    {% else %}
-      <p>There are no books in the library.</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>
+                    <strong>Title</strong>
+                </td>
+                <td>
+                    <strong>Author</strong>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in book_list %}
+            <tr>
+                <td>
+                    <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                </td>
+                <td>
+                    {{ book.author }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
+
 {% endblock %}

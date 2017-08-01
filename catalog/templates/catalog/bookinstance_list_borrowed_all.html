@@ -4,16 +4,43 @@
     <h1>All Borrowed books</h1>
 
     {% if bookinstance_list %}
-    <ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>
+                    <strong>Title</strong>
+                </td>
+                <td>
+                    <strong>Due Back</strong>
+                </td>
+                <td>
+                    <strong>Borrower</strong>
+                </td>
+                <td>
+                    <strong>Renew</strong>
+                </td>
+            </tr>
+        </thead>
 
-      {% for bookinst in bookinstance_list %}
-      <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">
-        <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }}) - {{ bookinst.borrower }}
-        {% if perms.catalog.can_mark_returned %}- <a href="{% url 'renew-book-librarian' bookinst.id %}">Renew</a>  {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-
+        <tbody>
+            {% for bookinst in bookinstance_list %}
+            <tr {% if bookinst.is_overdue %}class="danger"{% endif %}>
+                <td>
+                    <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a>
+                </td>
+                <td>
+                    {{ bookinst.due_back }}
+                </td>
+                <td>
+                    {{ bookinst.borrower }}
+                </td>
+                <td>
+                    <a href="{% url 'renew-book-librarian' bookinst.id %}">Renew</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
       <p>There are no books borrowed.</p>
     {% endif %}
