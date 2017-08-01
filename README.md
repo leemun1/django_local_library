@@ -8,6 +8,7 @@ Written in Django, this web application was created while working through the [t
 - Browse Books and Authors
 - View Details for Books and Authors
 - Register and Login/Logout
+- Password Retrieval
 - View My Borrowed Books (User)
 - View All Borrowed Books (Staff)
 - Renew Book Loans (Staff)
