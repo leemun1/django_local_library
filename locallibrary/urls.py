@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
@@ -21,17 +21,8 @@ urlpatterns = [
 ]
 
 # Use include() to add URLS from the catalog application
-from django.conf.urls import include
-
 urlpatterns += [
     url(r'^catalog/', include('catalog.urls')),
-]
-
-# Add URL maps to redirect the base URL to our application
-from django.views.generic import RedirectView
-
-urlpatterns += [
-    url(r'^$', RedirectView.as_view(url='/catalog/', permanent=True)),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)
