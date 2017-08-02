@@ -16,15 +16,22 @@
 
 <body>
 
-<ul class="header-bar">
+<nav>
+  <!-- <img src={% static 'images/logo.png' %} class="logo"> -->
+  <ul class="nav-bar nav-title">
+    <li><span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span></li>
+    <li>Thornhill Library</li>
+  </ul>
+  <ul class="nav-bar nav-items">
     <li><a href="{% url 'index' %}">Home</a></li>
     {% if user.is_authenticated %}
-      <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
-      <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+    <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
+    <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
     {% else %}
-      <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+    <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
     {% endif %}
-</ul>
+  </ul>
+</nav>
 
 <div class="container-fluid">
     <div class="row">
